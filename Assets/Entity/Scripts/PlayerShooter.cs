@@ -26,8 +26,10 @@ public class PlayerShooter : MonoBehaviour
     private IEnumerator CooldownBulletShoot(float cooldown)
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mouseWorldPosition - transform.position;
-        Quaternion rotation = Quaternion.FromToRotation(transform.position, direction);
+        mouseWorldPosition.y = 0;
+        Vector2 direction = new Vector2(mouseWorldPosition.x - transform.position.x, mouseWorldPosition.z - transform.position.z);
+        Quaternion rotation = Quaternion.FromToRotation(new Vector2(transform.position.x, transform.position.z), direction);
+        print($"{mouseWorldPosition} mousePos | {direction} dir | {direction.normalized} rot.norm | {Quaternion.FromToRotation(transform.position, direction).eulerAngles} rot");
         direction = direction.normalized;
 
         _entityBullet.Shoot(transform, transform.position, direction, rotation);
