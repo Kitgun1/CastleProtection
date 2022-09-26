@@ -1,4 +1,4 @@
-﻿namespace Other.StateMachine
+﻿namespace StateMachine
 {
     public abstract class StateBase
     {
