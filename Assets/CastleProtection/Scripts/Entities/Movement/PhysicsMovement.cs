@@ -22,7 +22,6 @@ namespace Entity.Movement
     #region Hash Fields
 
 	    private bool _grounded;
-	    private bool _fliped = false;
 	    private Vector3 _velocity = Vector3.zero;
 
     #endregion
