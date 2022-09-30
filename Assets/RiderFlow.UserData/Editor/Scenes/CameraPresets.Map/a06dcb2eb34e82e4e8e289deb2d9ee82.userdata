@@ -1,0 +1,41 @@
+{
+  "152a1b17a9c05114aa15d27b449c4d4f": {
+    "sceneGuid": "a06dcb2eb34e82e4e8e289deb2d9ee82",
+    "uniqueCameraId": "152a1b17a9c05114aa15d27b449c4d4f",
+    "name": "2",
+    "pointX": -0.837208748,
+    "pointY": -10.6583185,
+    "pointZ": 2.710135,
+    "directionX": -0.479492426,
+    "directionY": 0.519675434,
+    "directionZ": -0.479202449,
+    "directionW": -0.5199958,
+    "zoom": 9.954016
+  },
+  "5c2541cc0f24d5e4986ca3da4c42d34f": {
+    "sceneGuid": "a06dcb2eb34e82e4e8e289deb2d9ee82",
+    "uniqueCameraId": "5c2541cc0f24d5e4986ca3da4c42d34f",
+    "name": "1",
+    "pointX": -10.4907761,
+    "pointY": -7.590952,
+    "pointZ": 15.8639355,
+    "directionX": -0.138181329,
+    "directionY": 0.852882147,
+    "directionZ": -0.283014,
+    "directionW": -0.416419983,
+    "zoom": 16.8808289
+  },
+  "88689097706f8fb429f254fbac2d9cb8": {
+    "sceneGuid": "a06dcb2eb34e82e4e8e289deb2d9ee82",
+    "uniqueCameraId": "88689097706f8fb429f254fbac2d9cb8",
+    "name": "Iso",
+    "pointX": -0.954303,
+    "pointY": -10.6876974,
+    "pointZ": 16.0603256,
+    "directionX": -0.479492426,
+    "directionY": 0.519675434,
+    "directionZ": -0.479202449,
+    "directionW": -0.5199958,
+    "zoom": 9.954016
+  }
+}
