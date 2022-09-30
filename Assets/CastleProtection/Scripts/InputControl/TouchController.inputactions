@@ -1,24 +1,24 @@
 {
-    "name": "Touch",
+    "name": "TouchController",
     "maps": [
         {
-            "name": "FireControll",
-            "id": "00169aa5-5f59-42ec-b4f8-534efa4fa6bf",
+            "name": "Touch",
+            "id": "e4fd502d-1ca1-4f26-814a-debf6de58251",
             "actions": [
                 {
-                    "name": "TouchPosition",
+                    "name": "InputAction",
                     "type": "PassThrough",
-                    "id": "f0800e5f-2bcf-41cd-b1d5-190929462934",
-                    "expectedControlType": "Vector2",
+                    "id": "ec820377-5499-4af2-ae59-3320244d2e8e",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TouchInput",
+                    "name": "InputPosition",
                     "type": "PassThrough",
-                    "id": "9e466764-5e62-4ae0-991b-9fd45a3f51bc",
-                    "expectedControlType": "",
+                    "id": "e6559581-d1c3-4b64-989c-e2bbb7676ccc",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,45 +27,45 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a4b11df4-f260-4bd4-8a1d-90896bd4fb42",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "id": "71637a04-617c-41db-9720-1f8bf453870f",
+                    "path": "<Mouse>/pressure",
                     "interactions": "",
                     "processors": "",
-                    "groups": "MobileTouch",
-                    "action": "TouchPosition",
+                    "groups": "MouseAndKeyboard",
+                    "action": "InputAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "66f2b6d6-2953-4ad4-8f58-06c0660b4374",
+                    "id": "b04c634f-f24b-4f08-bf95-322fb661e203",
+                    "path": "<Touchscreen>/pressure",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MobileTouchScreen",
+                    "action": "InputAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20cb42ad-4a57-4bf5-a98e-124d407b15ea",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "PC",
-                    "action": "TouchPosition",
+                    "groups": "MouseAndKeyboard",
+                    "action": "InputPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c7874fdf-7225-48fc-99e6-91a3a7ee8ca2",
-                    "path": "<Touchscreen>/primaryTouch/press",
+                    "id": "2fbde754-1186-40de-97d1-5c1decd4661e",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "MobileTouch",
-                    "action": "TouchInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "807759d4-ddb6-42a1-a787-7c27bf01f72a",
-                    "path": "<Mouse>/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "TouchInput",
+                    "groups": "MobileTouchScreen",
+                    "action": "InputPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -74,13 +74,13 @@
     ],
     "controlSchemes": [
         {
-            "name": "MobileTouch",
-            "bindingGroup": "MobileTouch",
+            "name": "MouseAndKeyboard",
+            "bindingGroup": "MouseAndKeyboard",
             "devices": []
         },
         {
-            "name": "PC",
-            "bindingGroup": "PC",
+            "name": "MobileTouchScreen",
+            "bindingGroup": "MobileTouchScreen",
             "devices": []
         }
     ]
