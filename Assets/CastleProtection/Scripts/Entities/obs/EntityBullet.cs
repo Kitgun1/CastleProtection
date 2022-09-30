@@ -11,15 +11,16 @@ public class EntityBullet
 
     public void Shoot(Transform parent, Vector2 startPos, Vector2 direction, Quaternion rotation)
     {
-        GameObject bulletObj = Object.Instantiate(_data.BulletObj, startPos, rotation, parent);
+        GameObject bulletObj = Object.Instantiate(_data.BulletObj, startPos, rotation);
         Rigidbody bulletRigidbody = bulletObj.GetComponent<Rigidbody>();
         AddBulletVelocity(bulletRigidbody, direction);
         BulletLifeTime(bulletObj, _data.BulletLifeTime);
     }
 
-    private void AddBulletVelocity(Rigidbody bullet, Vector2 direction)
+    private void AddBulletVelocity(Rigidbody bullet, Vector2 direction2)
     {
-        bullet.AddForce(direction * _data.BulletSpeed, ForceMode.Impulse);
+        Vector3 direction3 = new Vector3(direction2.x, 0f, direction2.y);
+        bullet.AddForce(direction3 * _data.BulletSpeed, ForceMode.Impulse);
     }
 
     private void BulletLifeTime(GameObject bulletObj, float duration)
