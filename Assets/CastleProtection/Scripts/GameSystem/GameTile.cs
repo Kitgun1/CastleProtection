@@ -21,6 +21,20 @@ namespace GameSystem
         private Quaternion _southRotation = Quaternion.Euler(0f, 180f, 0f);
         private Quaternion _westRotation = Quaternion.Euler(0f, 270f, 0f);
 
+        private GameTileContent _content;
+
+        public GameTileContent Content
+        {
+            get => _content;
+            set
+            {
+                if (_content != null) _content.Recycle();
+
+                _content = value;
+                _content.transform.localPosition = transform.localPosition;
+            }
+        }
+
         public static void MarkEastWestNeighbors(GameTile east, GameTile west)
         {
             east._west = west;

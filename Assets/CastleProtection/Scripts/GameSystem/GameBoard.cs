@@ -76,5 +76,18 @@ namespace GameSystem
 
             foreach (var gameTile in _gameTiles) gameTile.ShowPath();
         }
+
+
+        public GameTile GetTile(Ray ray)
+        {
+            if (!Physics.Raycast(ray, out var hit)) return null;
+            int x = (int) (hit.point.x + _size.x * 0.5);
+            int y = (int) (hit.point.y + _size.y * 0.5);
+            if (x >= 0 && x < _size.x && y >= 0 && y < _size.y)
+            {
+                return _gameTiles[x + y * _size.x];
+            }
+            return null;
+        }
     }
 }
