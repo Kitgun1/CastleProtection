@@ -16,8 +16,10 @@ namespace GameSystem
         [SerializeField] private Camera camera;
         [SerializeField] private GameTileContentFactory gameTileContentFactory;
 
-        private Ray _touchRay => camera.ScreenPointToRay(_moveDirectionAction.ScreenPosition.ReadValue<Vector2>());
-        
+        private Ray _touchRay => camera.ScreenPointToRay(_screenPosition);
+
+        private Vector2 _screenPosition => _moveDirectionAction.ScreenPosition.ReadValue<Vector2>();
+
         private ScreenControl _control;
         private ScreenControl.MoveDirectionActions _moveDirectionAction;
 
@@ -32,15 +34,16 @@ namespace GameSystem
 
         private void Start()
         {
-            board.Initialize(boardSize);
+            board.Initialize(boardSize, gameTileContentFactory);
         }
-        
+
         private void HandleTouch()
         {
             GameTile tile = board.GetTile(_touchRay);
+            Debug.Log(_touchRay);
             if (tile != null)
             {
-                tile.Content = gameTileContentFactory.Get(GameTileContentType.Destination);
+                board.ToggleDestination(tile);
             }
         }
         
