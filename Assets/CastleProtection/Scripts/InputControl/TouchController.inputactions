@@ -2,7 +2,7 @@
     "name": "TouchController",
     "maps": [
         {
-            "name": "Touch",
+            "name": "GameTouch",
             "id": "e4fd502d-1ca1-4f26-814a-debf6de58251",
             "actions": [
                 {
@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "71637a04-617c-41db-9720-1f8bf453870f",
-                    "path": "<Mouse>/pressure",
+                    "path": "<Mouse>/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "b04c634f-f24b-4f08-bf95-322fb661e203",
-                    "path": "<Touchscreen>/pressure",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "MobileTouchScreen",
@@ -61,7 +61,7 @@
                 {
                     "name": "",
                     "id": "2fbde754-1186-40de-97d1-5c1decd4661e",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "MobileTouchScreen",

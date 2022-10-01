@@ -24,7 +24,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
     ""name"": ""TouchController"",
     ""maps"": [
         {
-            ""name"": ""Touch"",
+            ""name"": ""GameTouch"",
             ""id"": ""e4fd502d-1ca1-4f26-814a-debf6de58251"",
             ""actions"": [
                 {
@@ -50,7 +50,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""71637a04-617c-41db-9720-1f8bf453870f"",
-                    ""path"": ""<Mouse>/pressure"",
+                    ""path"": ""<Mouse>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
@@ -61,7 +61,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b04c634f-f24b-4f08-bf95-322fb661e203"",
-                    ""path"": ""<Touchscreen>/pressure"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MobileTouchScreen"",
@@ -83,7 +83,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2fbde754-1186-40de-97d1-5c1decd4661e"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MobileTouchScreen"",
@@ -107,10 +107,10 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Touch
-        m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
-        m_Touch_InputAction = m_Touch.FindAction("InputAction", throwIfNotFound: true);
-        m_Touch_InputPosition = m_Touch.FindAction("InputPosition", throwIfNotFound: true);
+        // GameTouch
+        m_GameTouch = asset.FindActionMap("GameTouch", throwIfNotFound: true);
+        m_GameTouch_InputAction = m_GameTouch.FindAction("InputAction", throwIfNotFound: true);
+        m_GameTouch_InputPosition = m_GameTouch.FindAction("InputPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -167,34 +167,34 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Touch
-    private readonly InputActionMap m_Touch;
-    private ITouchActions m_TouchActionsCallbackInterface;
-    private readonly InputAction m_Touch_InputAction;
-    private readonly InputAction m_Touch_InputPosition;
-    public struct TouchActions
+    // GameTouch
+    private readonly InputActionMap m_GameTouch;
+    private IGameTouchActions m_GameTouchActionsCallbackInterface;
+    private readonly InputAction m_GameTouch_InputAction;
+    private readonly InputAction m_GameTouch_InputPosition;
+    public struct GameTouchActions
     {
         private @TouchController m_Wrapper;
-        public TouchActions(@TouchController wrapper) { m_Wrapper = wrapper; }
-        public InputAction @InputAction => m_Wrapper.m_Touch_InputAction;
-        public InputAction @InputPosition => m_Wrapper.m_Touch_InputPosition;
-        public InputActionMap Get() { return m_Wrapper.m_Touch; }
+        public GameTouchActions(@TouchController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @InputAction => m_Wrapper.m_GameTouch_InputAction;
+        public InputAction @InputPosition => m_Wrapper.m_GameTouch_InputPosition;
+        public InputActionMap Get() { return m_Wrapper.m_GameTouch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
-        public void SetCallbacks(ITouchActions instance)
+        public static implicit operator InputActionMap(GameTouchActions set) { return set.Get(); }
+        public void SetCallbacks(IGameTouchActions instance)
         {
-            if (m_Wrapper.m_TouchActionsCallbackInterface != null)
+            if (m_Wrapper.m_GameTouchActionsCallbackInterface != null)
             {
-                @InputAction.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputAction;
-                @InputAction.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputAction;
-                @InputAction.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputAction;
-                @InputPosition.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputPosition;
-                @InputPosition.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputPosition;
-                @InputPosition.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnInputPosition;
+                @InputAction.started -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputAction;
+                @InputAction.performed -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputAction;
+                @InputAction.canceled -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputAction;
+                @InputPosition.started -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputPosition;
+                @InputPosition.performed -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputPosition;
+                @InputPosition.canceled -= m_Wrapper.m_GameTouchActionsCallbackInterface.OnInputPosition;
             }
-            m_Wrapper.m_TouchActionsCallbackInterface = instance;
+            m_Wrapper.m_GameTouchActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @InputAction.started += instance.OnInputAction;
@@ -206,7 +206,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
             }
         }
     }
-    public TouchActions @Touch => new TouchActions(this);
+    public GameTouchActions @GameTouch => new GameTouchActions(this);
     private int m_MouseAndKeyboardSchemeIndex = -1;
     public InputControlScheme MouseAndKeyboardScheme
     {
@@ -225,7 +225,7 @@ public partial class @TouchController : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_MobileTouchScreenSchemeIndex];
         }
     }
-    public interface ITouchActions
+    public interface IGameTouchActions
     {
         void OnInputAction(InputAction.CallbackContext context);
         void OnInputPosition(InputAction.CallbackContext context);

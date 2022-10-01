@@ -3,35 +3,30 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] private EntityBulletData _bulletData;
+    [SerializeField] private GunData _gunData;
 
-    private EntityBullet _entityBullet;
+    private Gun _gun;
     private IEnumerator _shoot = null;
 
     private void Start()
     {
-        _entityBullet = new EntityBullet(_bulletData);
+        _gun = new Gun(_gunData);
     }
 
-    public void TryShoot()
+    public void TryShoot(Vector3 direction, Quaternion rotation)
     {
         if (_shoot == null)
         {
-            _shoot = CooldownShoot(_bulletData.CooldownShoot);
+            _shoot = CooldownShoot(_gunData.CooldownShoot, direction, rotation);
             StartCoroutine(_shoot);
         }
     }
 
-    private IEnumerator CooldownShoot(float cooldown)
+    private IEnumerator CooldownShoot(float cooldown, Vector3 direction, Quaternion rotation)
     {
-        Shoot(_bulletData.Teplate, Vector3.zero, _bulletData.Teplate.transform.rotation);
+        _gun.Shoot(_gunData.BulletTemplate, transform.position, direction, rotation);
 
         yield return new WaitForSeconds(cooldown);
         _shoot = null;
-    }
-
-    private void Shoot(GameObject bullet, Vector3 direction, Quaternion rotation)
-    {
-        var bulletObj = Instantiate(bullet, direction, rotation);
     }
 }
