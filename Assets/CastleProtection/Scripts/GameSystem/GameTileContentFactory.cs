@@ -8,6 +8,7 @@ namespace GameSystem
     public class GameTileContentFactory : ScriptableObject
     {
         [SerializeField] private GameTileContentPrefabsData data;
+        
         public void Reclaim(GameTileContent content)
         {
             Destroy(content.gameObject);
@@ -21,6 +22,8 @@ namespace GameSystem
                     return Get(data.empty);
                 case GameTileContentType.Destination:
                     return Get(data.destination);
+                case GameTileContentType.Wall:
+                    return Get(data.wall);
                 default:
                     return null;
             }
@@ -62,5 +65,6 @@ namespace GameSystem
     {
         public GameTileContent empty;
         public GameTileContent destination;
+        public GameTileContent wall;
     }
 }

@@ -40,13 +40,27 @@ namespace GameSystem
         private void HandleTouch()
         {
             GameTile tile = board.GetTile(_touchRay);
-            Debug.Log(_touchRay);
             if (tile != null)
             {
                 board.ToggleDestination(tile);
             }
         }
         
+        private void HandleAlternativeTouch()
+        {
+            GameTile tile = board.GetTile(_touchRay);
+            if (tile != null)
+            {
+                board.ToggleWall(tile);
+            }
+        }
+        
+        
+        private void OnPress0(InputAction.CallbackContext obj)
+        {
+            HandleAlternativeTouch();
+
+        }
         
         private void OnPress1(InputAction.CallbackContext obj)
         {
@@ -56,13 +70,15 @@ namespace GameSystem
         private void OnEnable()
         {
             _moveDirectionAction.Enable();
-            _moveDirectionAction.Button0.performed += OnPress1;
+            _moveDirectionAction.Button0.performed += OnPress0;
+            _moveDirectionAction.Button1.performed += OnPress1;
         }
         
         private void OnDisable()
         {
             _moveDirectionAction.Disable();
-            _moveDirectionAction.Button0.performed -= OnPress1;
+            _moveDirectionAction.Button0.performed -= OnPress0;
+            _moveDirectionAction.Button1.performed -= OnPress1;
         }
     }
 }

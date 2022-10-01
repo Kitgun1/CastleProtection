@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ground: {fileID: 739494794}
-  TEST: {fileID: 574551760}
   tilePrefab: {fileID: 376908980056933845, guid: 0ce35bde06024e046a3a5a44441e43e8,
     type: 3}
 --- !u!4 &268782210
@@ -444,7 +443,6 @@ GameObject:
   - component: {fileID: 574551760}
   - component: {fileID: 574551759}
   - component: {fileID: 574551758}
-  - component: {fileID: 574551757}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -452,19 +450,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &574551757
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574551756}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &574551758
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1075,7 +1060,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27548
+  m_Name: pb_Mesh51494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

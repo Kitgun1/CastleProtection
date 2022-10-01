@@ -97,6 +97,14 @@ namespace GameSystem
                 }
             }
 
+            foreach (var gameTile in _gameTiles)
+            {
+                if (!gameTile.HasPath)
+                {
+                    return false;
+                }
+            }
+
             foreach (var gameTile in _gameTiles) gameTile.ShowPath();
 
             return true;
@@ -113,10 +121,28 @@ namespace GameSystem
                     FindPaths();
                 }
             }
-            else
+            else if (tile.Content.Type == GameTileContentType.Empty)
             {
                 tile.Content = _contentFactory.Get(GameTileContentType.Destination);
                 FindPaths();
+            }
+        }
+
+        public void ToggleWall(GameTile tile)
+        {
+            if (tile.Content.Type == GameTileContentType.Wall)
+            {
+                tile.Content = _contentFactory.Get(GameTileContentType.Empty);
+                FindPaths();
+            }
+            else if (tile.Content.Type == GameTileContentType.Empty)
+            {
+                tile.Content = _contentFactory.Get(GameTileContentType.Wall);
+                if (!FindPaths())
+                {
+                    tile.Content = _contentFactory.Get(GameTileContentType.Empty);
+                    FindPaths();
+                }
             }
         }
         
