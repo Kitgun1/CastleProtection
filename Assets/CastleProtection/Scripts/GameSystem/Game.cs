@@ -51,7 +51,8 @@ namespace GameSystem
             GameTile tile = board.GetTile(_touchRay);
             if (tile != null)
             {
-                board.ToggleWall(tile);
+                //board.ToggleWall(tile);
+                board.ToggleSpawnPoint(tile);
             }
         }
         
@@ -59,7 +60,6 @@ namespace GameSystem
         private void OnPress0(InputAction.CallbackContext obj)
         {
             HandleAlternativeTouch();
-
         }
         
         private void OnPress1(InputAction.CallbackContext obj)

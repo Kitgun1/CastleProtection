@@ -20,6 +20,7 @@ namespace GameSystem
     {
         Empty,
         Destination,
-        Wall
+        Wall,
+        SpawnPoint
     }
 }

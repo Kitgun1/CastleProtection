@@ -8,15 +8,17 @@ namespace GameSystem
     public class GameBoard : MonoBehaviour
     {
         [SerializeField] private Transform ground;
-
         [SerializeField] private GameObject tilePrefab;
-
+        
         private Vector2Int _size;
         private GameTile[] _gameTiles;
         private GameTileContentFactory _contentFactory;
-
-        private Queue<GameTile> _searchFrontier = new Queue<GameTile>();
         
+        private Queue<GameTile> _searchFrontier = new Queue<GameTile>();
+        private List<GameTile> _spawnPoints = new List<GameTile>();
+
+        public int SpawnPointCount => _spawnPoints.Count;
+
 
         public void Initialize(Vector2Int size, GameTileContentFactory contentFactory)
         {
@@ -47,12 +49,12 @@ namespace GameSystem
                 }
             }
 
-            ToggleDestination(_gameTiles[_gameTiles.Length / 2]);
+            ToggleDestination(_gameTiles[_gameTiles.Length-1]);
+            ToggleSpawnPoint(_gameTiles[0]);
         }
 
         public bool FindPaths()
         {
-            //foreach (var tile in _gameTiles) tile.ClearPath();
             foreach (var tile in _gameTiles)
             {
                 if (tile.Content.Type == GameTileContentType.Destination)
@@ -70,10 +72,6 @@ namespace GameSystem
             {
                 return false;
             }
-
-            /*int destinationIndex = 1;
-            _gameTiles[destinationIndex].BecomeDestination();
-            _searchFrontier.Enqueue(_gameTiles[destinationIndex]);*/
 
             while (_searchFrontier.Count > 0)
             {
@@ -145,6 +143,23 @@ namespace GameSystem
                 }
             }
         }
+
+        public void ToggleSpawnPoint(GameTile tile)
+        {
+            if (tile.Content.Type == GameTileContentType.SpawnPoint)
+            {
+                if (_spawnPoints.Count > 1)
+                {
+                    _spawnPoints.Remove(tile);
+                    tile.Content = _contentFactory.Get(GameTileContentType.Empty);
+                }
+            }
+            else if (tile.Content.Type == GameTileContentType.Empty)
+            {
+                tile.Content = _contentFactory.Get(GameTileContentType.SpawnPoint);
+                _spawnPoints.Add(tile);
+            }
+        }
         
         public GameTile GetTile(Ray ray)
         {
@@ -158,6 +173,11 @@ namespace GameSystem
                 return f;
             }
             return null;
+        }
+        
+        public GameTile GetSpawnPoint(int index)
+        {
+            return _spawnPoints[index];
         }
     }
 }

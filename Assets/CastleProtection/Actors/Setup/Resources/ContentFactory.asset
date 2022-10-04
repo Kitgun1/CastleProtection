@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d824da6516f94d41a1cf0e6da7424222, type: 3}
   m_Name: ContentFactory
   m_EditorClassIdentifier: 
-  data:
+  tileContentPrefabsData:
     empty: {fileID: 95749277425264520, guid: 6796600ec277d734bb600c9538a42040, type: 3}
     destination: {fileID: 8747536059544645399, guid: dedaa8fb90e8afd4b90dc47021fd844b,
+      type: 3}
+    wall: {fileID: 3785585375633028303, guid: 106343283ae0bcc43a93ae9072d1112d, type: 3}
+    spawnPoint: {fileID: 78513435973804940, guid: 45c28adf8005dce45b17e3873e59dbe3,
       type: 3}

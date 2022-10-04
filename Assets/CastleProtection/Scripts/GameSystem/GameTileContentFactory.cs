@@ -7,7 +7,7 @@ namespace GameSystem
     [CreateAssetMenu]
     public class GameTileContentFactory : ScriptableObject
     {
-        [SerializeField] private GameTileContentPrefabsData data;
+        [SerializeField] private GameTileContentPrefabsData tileContentPrefabsData;
         
         public void Reclaim(GameTileContent content)
         {
@@ -19,11 +19,13 @@ namespace GameSystem
             switch (type)
             {
                 case GameTileContentType.Empty:
-                    return Get(data.empty);
+                    return Get(tileContentPrefabsData.empty);
                 case GameTileContentType.Destination:
-                    return Get(data.destination);
+                    return Get(tileContentPrefabsData.destination);
                 case GameTileContentType.Wall:
-                    return Get(data.wall);
+                    return Get(tileContentPrefabsData.wall);
+                case GameTileContentType.SpawnPoint:
+                    return Get(tileContentPrefabsData.spawnPoint);
                 default:
                     return null;
             }
@@ -66,5 +68,6 @@ namespace GameSystem
         public GameTileContent empty;
         public GameTileContent destination;
         public GameTileContent wall;
+        public GameTileContent spawnPoint;
     }
 }
