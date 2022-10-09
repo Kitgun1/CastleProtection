@@ -37,6 +37,7 @@ public class PlayerInput : MonoBehaviour
         Vector3 direction = GetDirection().normalized;
         Quaternion rotation = GetRotation(direction);
         _playerGun.TryShoot(direction, rotation);
+        _playerGun.LookToDirection(direction);
     }
 
     private Vector3 GetDirection()

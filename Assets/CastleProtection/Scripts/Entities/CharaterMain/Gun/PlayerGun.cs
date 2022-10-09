@@ -22,6 +22,11 @@ public class PlayerGun : MonoBehaviour
         }
     }
 
+    public void LookToDirection(Vector3 direction)
+    {
+        _gun.SetGunRotation(direction);
+    }
+
     private IEnumerator CooldownShoot(float cooldown, Vector3 direction, Quaternion rotation)
     {
         _gun.Shoot(_gunData.BulletTemplate, transform.position, direction, rotation);
